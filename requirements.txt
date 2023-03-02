@@ -1,4 +1,3 @@
-PyMovieDb==1.6.4
-json5==0.9.6
-easygui==0.98.2
-openpyxl==3.0.9
+PyMovieDb
+easygui
+openpyxl

@@ -20,9 +20,10 @@ for row in range(2,base.max_row+1):
                 rating = metadata.cell(row = rowCount, column = 2)
                 contentRating = metadata.cell(row = rowCount, column = 3)
                 releaseDate = metadata.cell(row = rowCount, column = 4)
-                directors = metadata.cell(row = rowCount, column = 6)
-                actors = metadata.cell(row = rowCount, column = 5)
-                creators = metadata.cell(row = rowCount, column = 7)
+                genre = metadata.cell(row = rowCount, column = 5)
+                directors = metadata.cell(row = rowCount, column = 7)
+                actors = metadata.cell(row = rowCount, column = 6)
+                creators = metadata.cell(row = rowCount, column = 8)
                 if rating.value != 'data not found' and rating.value is not None:
                     rowCount = rowCount + 1
                     break
@@ -43,6 +44,7 @@ for row in range(2,base.max_row+1):
                 rating.value = movieObject['rating']['ratingValue']
                 contentRating.value = movieObject['contentRating']
                 releaseDate.value = movieObject['datePublished']
+                genre.value = ','.join(movieObject['genre'])
                 actors.value = ','.join(list(map(itemgetter('name'), movieObject['actor'])))
                 directors.value = ','.join(list(map(itemgetter('name'), movieObject['director'])))
                 creators.value = ','.join(list(map(itemgetter('name'), movieObject['creator'])))
@@ -59,7 +61,7 @@ for row in range(2,base.max_row+1):
                 wb.save(filename = "Movies.xlsx")
                 rowCount = rowCount + 1
                 done = True
-
+input('Press ENTER to exit')
 
 
             #print(ourmovie.data)
